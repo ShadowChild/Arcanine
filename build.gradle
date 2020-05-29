@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+project.ext.d4j = "3.1.0-SNAPSHOT"
+
+group 'io.github.shadowchild'
+archivesBaseName = 'Arcanine'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    implementation "com.discord4j:discord4j-core:$d4j"
+    implementation 'com.github.ShadowChild:Cybernize2:master-SNAPSHOT'
+}
