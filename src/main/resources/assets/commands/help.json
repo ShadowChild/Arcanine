@@ -1,0 +1,16 @@
+{
+  "class": "io.github.shadowchild.arcanine.command.CommandHelp",
+  "command": {
+    "name": "help",
+    "alias": [
+      "h",
+      "hlep"
+    ],
+    "permission": "EVERYONE",
+    "usage": ">%cmd% or >%cmd% <command> to get deeper information",
+    "description": "Shows the help message",
+    "deep_description": [
+      ""
+    ]
+  }
+}
