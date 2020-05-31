@@ -32,6 +32,8 @@ public class Loader {
 
     public void reloadCommands() throws FileNotFoundException {
 
+        commands.clear();
+
         File[] internal = internalCommandsFolder.listFiles((file) -> file.getName().endsWith(".json"));
 
         File[] external = externalCommandsFolder.listFiles((file) -> file.getName().endsWith(".json"));

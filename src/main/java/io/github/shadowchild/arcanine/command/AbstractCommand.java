@@ -4,8 +4,6 @@ import discord4j.core.event.domain.message.MessageEvent;
 import discord4j.core.object.entity.User;
 import discord4j.core.object.entity.channel.MessageChannel;
 
-import java.util.Arrays;
-
 public abstract class AbstractCommand<M extends MessageEvent> {
 
     protected String name;
@@ -49,7 +47,7 @@ public abstract class AbstractCommand<M extends MessageEvent> {
 
     public String getUsage(String alias) {
 
-        return usage;
+        return usage.replaceAll("%cmd%", alias);
     }
 
     public String getUsage() {

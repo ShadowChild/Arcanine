@@ -8,7 +8,6 @@ import discord4j.core.object.entity.User;
 import io.github.shadowchild.arcanine.util.Loader;
 
 import java.io.FileNotFoundException;
-import java.util.Arrays;
 
 public class Arcanine {
 
@@ -19,7 +18,7 @@ public class Arcanine {
 
     public static final Loader loader = new Loader("assets");
 
-    private static GatewayDiscordClient client;
+    public static GatewayDiscordClient client;
 
     public static final String prefix = ">";
 
@@ -47,12 +46,12 @@ public class Arcanine {
             e.printStackTrace();
             System.exit(0);
         }
-        loader.commands.forEach((cmd) -> System.out.println(cmd.getName()));
-        loader.commands.forEach((cmd) -> System.out.println(Arrays.toString(cmd.getAlias())));
+//        loader.commands.forEach((cmd) -> System.out.println(cmd.getName()));
+//        loader.commands.forEach((cmd) -> System.out.println(Arrays.toString(cmd.getAlias())));
         loader.commands.forEach((cmd) -> System.out.println(cmd.getUsage()));
-        loader.commands.forEach((cmd) -> System.out.println(cmd.getDescription()));
-        loader.commands.forEach((cmd) -> System.out.println(Arrays.toString(cmd.getDeep_description())));
-        loader.commands.forEach((cmd) -> System.out.println(cmd.getPermission()));
+//        loader.commands.forEach((cmd) -> System.out.println(cmd.getDescription()));
+//        loader.commands.forEach((cmd) -> System.out.println(Arrays.toString(cmd.getDeep_description())));
+//        loader.commands.forEach((cmd) -> System.out.println(cmd.getPermission()));
         loadClient();
     }
 
