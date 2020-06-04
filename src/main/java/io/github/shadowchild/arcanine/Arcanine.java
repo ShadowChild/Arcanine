@@ -37,11 +37,6 @@ public class Arcanine {
             scanner.close();
         } else {
 
-            for (String arg : args) {
-
-                System.out.println(arg);
-            }
-
             for (int i = 0; i < args.length; i++) {
 
                 String arg = args[i];
@@ -63,12 +58,6 @@ public class Arcanine {
             e.printStackTrace();
             System.exit(0);
         }
-//        loader.commands.forEach((cmd) -> System.out.println(cmd.getName()));
-//        loader.commands.forEach((cmd) -> System.out.println(Arrays.toString(cmd.getAlias())));
-//        resources.loader.commands.forEach((cmd) -> System.out.println(cmd.getUsage()));
-//        loader.commands.forEach((cmd) -> System.out.println(cmd.getDescription()));
-//        loader.commands.forEach((cmd) -> System.out.println(Arrays.toString(cmd.getDeep_description())));
-//        loader.commands.forEach((cmd) -> System.out.println(cmd.getPermission()));
         loadClient();
     }
 

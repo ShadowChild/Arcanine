@@ -1,10 +1,11 @@
 package io.github.shadowchild.arcanine.command;
 
 import discord4j.core.event.domain.message.MessageEvent;
+import discord4j.core.event.domain.message.ReactionAddEvent;
 import discord4j.core.object.entity.User;
 import discord4j.core.object.entity.channel.MessageChannel;
 
-public abstract class AbstractCommand<M extends MessageEvent> {
+public abstract class AbstractCommand {
 
     protected String name;
 
@@ -18,8 +19,8 @@ public abstract class AbstractCommand<M extends MessageEvent> {
 
     protected String[] deep_description;
 
-    public abstract void onMessage(M event, MessageChannel channel, User sender, String alias);
-    public abstract void onReactionAdd(M event, MessageChannel channel, User sender);
+    public abstract void onMessage(MessageEvent event, MessageChannel channel, User sender, String alias);
+    public abstract void onReactionAdd(ReactionAddEvent event, MessageChannel channel, User sender);
 
     public String getName() {
 

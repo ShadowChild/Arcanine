@@ -1,6 +1,7 @@
 package io.github.shadowchild.arcanine.command;
 
 import discord4j.core.event.domain.message.MessageEvent;
+import discord4j.core.event.domain.message.ReactionAddEvent;
 import discord4j.core.object.entity.User;
 import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.core.spec.EmbedCreateSpec;
@@ -30,7 +31,7 @@ public class CommandHelp extends AbstractCommand {
     }
 
     @Override
-    public void onReactionAdd(MessageEvent event, MessageChannel channel, User sender) {
+    public void onReactionAdd(ReactionAddEvent event, MessageChannel channel, User sender) {
 
     }
 }
