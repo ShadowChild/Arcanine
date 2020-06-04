@@ -1,21 +1,22 @@
 package io.github.shadowchild.arcanine.util;
 
-import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
+import discord4j.core.GatewayDiscordClient;
 import io.github.shadowchild.arcanine.Arcanine;
 import io.github.shadowchild.arcanine.command.AbstractCommand;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.file.FileSystem;
 import java.nio.file.*;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -23,6 +24,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Loader {
+
+    public final URL JAR_FILE = Arcanine.class.getProtectionDomain().getCodeSource().getLocation();
+
+    public final Loader loader = new Loader("assets");
+
+    public GatewayDiscordClient client;
+
+    public final String prefix = ">";
+
+    public String accessToken = null;
+    public boolean hasGui = false;
 
     public URL externalCommandsFolder;
     public final URL internalCommandsFolder;
@@ -51,18 +63,11 @@ public class Loader {
 
         List<Path> internal = filterInternalCommands(internalCommandsFolder);
 
-//        File[] internal = internalCommandsFolder.listFiles((file) -> file.getName().endsWith(".json"));
-
         List<Path> external = filterInternalCommands(externalCommandsFolder);
 
-        if(internal != null) {
+        instanceCommandsFromArray(internal, true);
 
-            instanceCommandsFromArray(internal, true);
-        }
-        if(external != null) {
-
-            instanceCommandsFromArray(external, false);
-        }
+        instanceCommandsFromArray(external, false);
     }
 
     private List<Path> filterInternalCommands(URL url) throws URISyntaxException, IOException {
@@ -77,9 +82,7 @@ public class Loader {
 
             myPath = Paths.get(uri);
         }
-        List<Path> ret = Files.walk(myPath).filter(cmd -> cmd.getFileName().toString().endsWith(".json")).collect(Collectors.toList());
-        if(ret == null) return Lists.newArrayList();
-        else return ret;
+        return Files.walk(myPath).filter(cmd -> cmd.getFileName().toString().endsWith(".json")).collect(Collectors.toList());
     }
 
     private void instanceCommandsFromArray(List<Path> commands, boolean internal) throws IOException {
@@ -121,6 +124,7 @@ public class Loader {
     }
 
     private AbstractCommand externalCommand(String clazz, JsonObject props) throws ClassNotFoundException {
+
         return null;
     }
 

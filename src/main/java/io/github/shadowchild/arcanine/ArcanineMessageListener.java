@@ -10,7 +10,7 @@ public class ArcanineMessageListener {
 
         Message m = e.getMessage();
         String content = m.getContent();
-        if(content.startsWith(Arcanine.resources.prefix)) {
+        if(content.startsWith(Arcanine.LOADER.prefix)) {
 
             // get rid of the prefix
             content = content.substring(1);
@@ -19,7 +19,7 @@ public class ArcanineMessageListener {
                 System.out.println(s);
             }
             String alias = args[0];
-            for (AbstractCommand cmd : Arcanine.resources.loader.commands) {
+            for (AbstractCommand cmd : Arcanine.LOADER.commands) {
 
                 String[] aliases = cmd.getAlias();
                 for (String s : aliases) {

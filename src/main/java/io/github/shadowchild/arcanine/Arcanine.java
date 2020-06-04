@@ -4,7 +4,7 @@ import discord4j.core.DiscordClientBuilder;
 import discord4j.core.event.domain.lifecycle.ReadyEvent;
 import discord4j.core.event.domain.message.MessageCreateEvent;
 import discord4j.core.object.entity.User;
-import io.github.shadowchild.arcanine.util.Resources;
+import io.github.shadowchild.arcanine.util.Loader;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -14,7 +14,7 @@ public class Arcanine {
 
     public static String[] runArgs;
 
-    public static final Resources resources = new Resources();
+    public static final Loader LOADER = new Loader("assets");
 
     public static void main(String[] args) {
 
@@ -26,13 +26,13 @@ public class Arcanine {
             System.out.println("Arcanine Setup was not loaded correctly, please answer the following questions.");
             System.out.println("Would you Arcanine to have a gui? true/false: ");
 
-            resources.hasGui = scanner.nextBoolean();
+            LOADER.hasGui = scanner.nextBoolean();
 
             // Workaround for nextBoolean not consuming the \n
             scanner.nextLine();
 
             System.out.println("Please input your Token from Discord Developer Portal: ");
-            resources.accessToken = scanner.nextLine();
+            LOADER.accessToken = scanner.nextLine();
 
             scanner.close();
         } else {
@@ -56,7 +56,7 @@ public class Arcanine {
 
         try {
 
-            resources.loader.reloadCommands();
+            LOADER.reloadCommands();
         } catch (IOException | URISyntaxException e) {
 
             // This should never happen
@@ -65,7 +65,7 @@ public class Arcanine {
         }
 //        loader.commands.forEach((cmd) -> System.out.println(cmd.getName()));
 //        loader.commands.forEach((cmd) -> System.out.println(Arrays.toString(cmd.getAlias())));
-        resources.loader.commands.forEach((cmd) -> System.out.println(cmd.getUsage()));
+//        resources.loader.commands.forEach((cmd) -> System.out.println(cmd.getUsage()));
 //        loader.commands.forEach((cmd) -> System.out.println(cmd.getDescription()));
 //        loader.commands.forEach((cmd) -> System.out.println(Arrays.toString(cmd.getDeep_description())));
 //        loader.commands.forEach((cmd) -> System.out.println(cmd.getPermission()));
@@ -74,25 +74,25 @@ public class Arcanine {
 
     private static void loadClient() {
 
-        resources.client = DiscordClientBuilder.create(resources.accessToken).build().login().block();
+        LOADER.client = DiscordClientBuilder.create(LOADER.accessToken).build().login().block();
 
-        resources.client.getEventDispatcher().on(ReadyEvent.class)
+        LOADER.client.getEventDispatcher().on(ReadyEvent.class)
                 .subscribe(event -> {
                     User self = event.getSelf();
                     System.out.println(String.format("Logged in as %s#%s", self.getUsername(), self.getDiscriminator()));
                 });
 
-        resources.client.getEventDispatcher().on(MessageCreateEvent.class).subscribe(ArcanineMessageListener::onMessage);
+        LOADER.client.getEventDispatcher().on(MessageCreateEvent.class).subscribe(ArcanineMessageListener::onMessage);
 
-        resources.client.onDisconnect().block();
+        LOADER.client.onDisconnect().block();
     }
 
     private static void handleArg(String mod, String opt) {
 
         switch(mod) {
 
-            case "gui": resources.hasGui = true; break;
-            case "token": resources.accessToken = opt.replace(" ", ""); break;
+            case "gui": LOADER.hasGui = true; break;
+            case "token": LOADER.accessToken = opt.replace(" ", ""); break;
 
             default: break;
         }

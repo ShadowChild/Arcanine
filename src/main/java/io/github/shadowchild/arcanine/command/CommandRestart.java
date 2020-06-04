@@ -26,7 +26,7 @@ public class CommandRestart extends AbstractCommand {
         } else {
 
             try {
-                File jar = new File(Arcanine.resources.JAR_FILE.toURI());
+                File jar = new File(Arcanine.LOADER.JAR_FILE.toURI());
                 String workingDir = jar.getParentFile().getCanonicalPath();
                 String jarName = jar.getName();
 
