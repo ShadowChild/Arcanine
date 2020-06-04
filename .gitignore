@@ -3,3 +3,4 @@
 secret.txt
 build/
 /*.jar
+src/main/resources/assets/configs/Config.json
