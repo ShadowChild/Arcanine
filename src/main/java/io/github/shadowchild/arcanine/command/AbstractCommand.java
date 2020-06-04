@@ -18,7 +18,7 @@ public abstract class AbstractCommand<M extends MessageEvent> {
 
     protected String[] deep_description;
 
-    public abstract void onMessage(M event, MessageChannel channel, User sender);
+    public abstract void onMessage(M event, MessageChannel channel, User sender, String alias);
     public abstract void onReactionAdd(M event, MessageChannel channel, User sender);
 
     public String getName() {

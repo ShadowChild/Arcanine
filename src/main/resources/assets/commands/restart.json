@@ -3,7 +3,9 @@
   "command": {
     "name": "restart",
     "alias": [
-      "r"
+      "r",
+      "shutdown",
+      "s"
     ],
     "permission": "BOT_OWNER",
     "usage": ">%cmd%",

@@ -12,7 +12,7 @@ import java.util.function.Consumer;
 public class CommandHelp extends AbstractCommand {
 
     @Override
-    public void onMessage(MessageEvent event, MessageChannel channel, User sender) {
+    public void onMessage(MessageEvent event, MessageChannel channel, User sender, String alias) {
 
         Consumer<EmbedCreateSpec> embed = spec -> {
 
@@ -20,7 +20,7 @@ public class CommandHelp extends AbstractCommand {
           spec.setTitle("Arcanine Help!");
           spec.setUrl("https://github.com/ShadowChild/Arcanine");
           spec.setDescription("Arcanine is a bot made by ShadowChild.");
-          Arcanine.loader.commands.forEach((cmd) -> {
+          Arcanine.resources.loader.commands.forEach((cmd) -> {
 
                 spec.addField(cmd.getName(), cmd.getDescription(), false);
           });

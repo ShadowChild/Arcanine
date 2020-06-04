@@ -1,11 +1,19 @@
 plugins {
     id 'java'
+    id 'application'
 }
+
+//java {
+//
+//    sourceCompatability = JavaVersion.VERSION_14;
+//    targetCompatability = JavaVersion.VERSION_14;
+//}
 
 project.ext.d4j = "3.1.0-SNAPSHOT"
 
-group 'io.github.shadowchild'
-archivesBaseName = 'Arcanine'
+group 'io.github.shadowchild.arcanine'
+mainClassName = 'io.github.shadowchild.arcanine.Arcanine'
+//rootProject.name = 'Arcanine'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -19,4 +27,34 @@ dependencies {
 
     implementation "com.discord4j:discord4j-core:$d4j"
     implementation 'com.github.ShadowChild:Cybernize2:master-SNAPSHOT'
+}
+
+ext.sharedManifest = manifest {
+
+    attributes 'Main-Class' : 'io.github.shadowchild.arcanine.Arcanine'
+}
+
+jar {
+
+    manifest = project.manifest {
+        from sharedManifest
+    }
+}
+
+task uberJar(type: Jar) {
+
+    manifest = project.manifest {
+        from sharedManifest
+    }
+
+    dependsOn build
+
+    archiveClassifier = 'fat'
+
+    from sourceSets.main.output
+
+    dependsOn configurations.runtimeClasspath
+    from {
+        configurations.runtimeClasspath.findAll { it.name.endsWith('jar')}.collect { zipTree(it) }
+    }
 }

@@ -4,15 +4,13 @@ import discord4j.core.event.domain.message.MessageCreateEvent;
 import discord4j.core.object.entity.Message;
 import io.github.shadowchild.arcanine.command.AbstractCommand;
 
-import java.util.Arrays;
-
 public class ArcanineMessageListener {
 
     public static void onMessage(MessageCreateEvent e) {
 
         Message m = e.getMessage();
         String content = m.getContent();
-        if(content.startsWith(Arcanine.prefix)) {
+        if(content.startsWith(Arcanine.resources.prefix)) {
 
             // get rid of the prefix
             content = content.substring(1);
@@ -21,14 +19,14 @@ public class ArcanineMessageListener {
                 System.out.println(s);
             }
             String alias = args[0];
-            for (AbstractCommand cmd : Arcanine.loader.commands) {
+            for (AbstractCommand cmd : Arcanine.resources.loader.commands) {
 
                 String[] aliases = cmd.getAlias();
-                for (int i = 0; i < aliases.length; i++) {
+                for (String s : aliases) {
 
-                    if(alias.equalsIgnoreCase(aliases[i])) {
+                    if (alias.equalsIgnoreCase(s)) {
 
-                        cmd.onMessage(e, m.getChannel().block(), m.getAuthor().get());
+                        cmd.onMessage(e, m.getChannel().block(), m.getAuthor().get(), s);
                     }
                 }
             }
