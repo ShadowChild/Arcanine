@@ -43,6 +43,12 @@ jobs:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
           
+          
+      # Fix gradlew have permission issues
+      - run:
+          name: chmod permissions
+          command: chmod +x ./gradlew
+      
       - run:
           name: Assemble JAR
           command: |
