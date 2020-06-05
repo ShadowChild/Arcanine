@@ -5,13 +5,13 @@ import com.google.gson.JsonObject;
 import discord4j.core.GatewayDiscordClient;
 import io.github.shadowchild.arcanine.Arcanine;
 import io.github.shadowchild.arcanine.command.AbstractCommand;
+import io.github.shadowchild.cybernize.registry.NamedRegistry;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,16 +19,15 @@ public class Loader {
 
     public final URL JAR_FILE = Arcanine.class.getProtectionDomain().getCodeSource().getLocation();
 
+    public BotConfig botCfg;
+    public LoggerConfig loggerCfg;
+    public GuiConfig guiConfig;
+
     public GatewayDiscordClient client;
 
-    public final String prefix = ">";
+    private URL intCmdFldr, externCmdFldr, configUrl;
 
-    public String accessToken = null;
-    public boolean hasGui = false;
-
-    public final URL internalCommandsFolder;
-
-    public final List<AbstractCommand> commands = new LinkedList<>();
+    public final NamedRegistry<AbstractCommand> commands = new NamedRegistry<>();
 
     private final String resourcesDir;
 
@@ -36,14 +35,15 @@ public class Loader {
 
         // in this example resourcesDir is "assets"
         this.resourcesDir = resourcesDir;
-        internalCommandsFolder = ClassLoadUtil.getSafeCL().getResource(resourcesDir + "/commands");
+        intCmdFldr = ClassLoadUtil.getSafeCL().getResource(resourcesDir + "/commands");
+        configUrl = ClassLoadUtil.getSafeCL().getResource(resourcesDir + "/configs/Config.json");
     }
 
     public void reloadCommands() throws IOException, URISyntaxException {
 
-        commands.clear();
+        commands.clearRegistry();
 
-        List<Path> internal = filterCommandsFromPath(internalCommandsFolder);
+        List<Path> internal = filterCommandsFromPath(intCmdFldr);
 
         instanceCommandsFromArray(internal);
     }
@@ -67,7 +67,8 @@ public class Loader {
 
             try {
 
-                this.commands.add(internalCommand(clazz, props));
+                AbstractCommand cmd = internalCommand(clazz, props);
+                this.commands.register(cmd.getName().toLowerCase(), cmd);
             } catch(Exception e) {
 
                 String name = JsonUtil.getString(props, "name");
@@ -88,18 +89,36 @@ public class Loader {
         return cmd;
     }
 
-    public static class BotConfig {
+    public void loadConfig() throws IOException, URISyntaxException {
 
-        public static boolean gui;
-        public static String token;
+        Path path = FileUtil.getPath(configUrl, resourcesDir + "/configs/Config.json");
+
+        JsonObject contents = JsonUtil.getObjectFromPath(path);
+
+        Gson gson = new Gson();
+
+        JsonObject bot = JsonUtil.getObject(contents, "bot");
+        JsonObject logger = JsonUtil.getObject(contents, "logger");
+        JsonObject gui = JsonUtil.getObject(contents, "gui");
+
+        botCfg = gson.fromJson(bot, BotConfig.class);
+        loggerCfg = gson.fromJson(logger, LoggerConfig.class);
+        guiConfig = gson.fromJson(gui, GuiConfig.class);
     }
 
-    public static class LoggerConfig {
+    public class BotConfig {
+
+        public boolean gui;
+        public String token;
+        public String prefix;
+    }
+
+    public class LoggerConfig {
 
 
     }
 
-    public static class GuiConfig {
+    public class GuiConfig {
 
 
     }

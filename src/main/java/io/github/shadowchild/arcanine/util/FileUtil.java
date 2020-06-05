@@ -18,10 +18,12 @@ public class FileUtil {
         Path path;
         if(uri.getScheme().equals("jar")) {
 
+            // Internal
             FileSystem fs = FileSystems.newFileSystem(uri, Collections.emptyMap());
             path = fs.getPath(resource);
         } else {
 
+            // External
             path = Paths.get(uri);
         }
         return path;

@@ -9,6 +9,11 @@ plugins {
 //    targetCompatability = JavaVersion.VERSION_14;
 //}
 
+//configurations.all {
+//
+//    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+//}
+
 project.ext.d4j = "3.1.0-SNAPSHOT"
 
 group 'io.github.shadowchild.arcanine'
@@ -26,7 +31,7 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 
     implementation "com.discord4j:discord4j-core:$d4j"
-    implementation 'com.github.ShadowChild:Cybernize2:master-SNAPSHOT'
+    implementation ('com.github.ShadowChild:Cybernize2:master-SNAPSHOT') { changing = true }
 }
 
 ext.sharedManifest = manifest {

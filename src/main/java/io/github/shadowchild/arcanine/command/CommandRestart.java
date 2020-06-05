@@ -31,7 +31,7 @@ public class CommandRestart extends AbstractCommand {
                 String workingDir = jar.getParentFile().getCanonicalPath();
                 String jarName = jar.getName();
 
-                ArrayList<String> commands = new ArrayList();
+                ArrayList<String> commands = new ArrayList<>();
                 commands.add("java");
                 commands.add("-jar");
                 commands.add(new File(workingDir, "libs/ProcStart.jar").getCanonicalPath());

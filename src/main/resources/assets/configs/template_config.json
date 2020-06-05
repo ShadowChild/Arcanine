@@ -1,0 +1,13 @@
+{
+  "bot": {
+    "gui": false,
+    "token": "GET FROM DISCORD",
+    "prefix": ">"
+  },
+  "logger": {
+
+  },
+  "gui": {
+
+  }
+}

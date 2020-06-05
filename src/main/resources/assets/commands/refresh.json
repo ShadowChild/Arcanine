@@ -1,0 +1,16 @@
+{
+  "class": "io.github.shadowchild.arcanine.command.CommandRefresh",
+  "command": {
+
+    "name": "refresh",
+    "alias": [
+      "refr"
+    ],
+    "permission": "BOW_OWNER",
+    "usage": ">%cmd%",
+    "description": "This command will refresh the commands list of Arcanine",
+    "deep_description": [
+      ""
+    ]
+  }
+}

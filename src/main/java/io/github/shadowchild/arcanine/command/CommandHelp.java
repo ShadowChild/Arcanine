@@ -21,9 +21,10 @@ public class CommandHelp extends AbstractCommand {
           spec.setTitle("Arcanine Help!");
           spec.setUrl("https://github.com/ShadowChild/Arcanine");
           spec.setDescription("Arcanine is a bot made by ShadowChild.");
-          Arcanine.LOADER.commands.forEach((cmd) -> {
 
-                spec.addField(cmd.getName(), cmd.getDescription(), false);
+          Arcanine.LOADER.commands.getRegistry().forEach((key, cmd) -> {
+
+                spec.addField(key, cmd.getDescription(), false);
           });
 
         };

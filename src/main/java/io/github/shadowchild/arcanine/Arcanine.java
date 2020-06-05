@@ -8,7 +8,6 @@ import io.github.shadowchild.arcanine.util.Loader;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.Scanner;
 
 public class Arcanine {
 
@@ -20,33 +19,14 @@ public class Arcanine {
 
         runArgs = args;
 
-        if(args.length == 0) {
+        try {
 
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Arcanine Setup was not loaded correctly, please answer the following questions.");
-            System.out.println("Would you Arcanine to have a gui? true/false: ");
+            LOADER.loadConfig();
+        } catch (Exception e) {
 
-            LOADER.hasGui = scanner.nextBoolean();
-
-            // Workaround for nextBoolean not consuming the \n
-            scanner.nextLine();
-
-            System.out.println("Please input your Token from Discord Developer Portal: ");
-            LOADER.accessToken = scanner.nextLine();
-
-            scanner.close();
-        } else {
-
-            for (int i = 0; i < args.length; i++) {
-
-                String arg = args[i];
-                if (arg.contains("--")) {
-
-                    String mod = arg.substring(2);
-                    String opt = args[i + 1];
-                    handleArg(mod, opt);
-                }
-            }
+            // Should never happen
+            e.printStackTrace();
+            System.exit(0);
         }
 
         try {
@@ -63,7 +43,7 @@ public class Arcanine {
 
     private static void loadClient() {
 
-        LOADER.client = DiscordClientBuilder.create(LOADER.accessToken).build().login().block();
+        LOADER.client = DiscordClientBuilder.create(LOADER.botCfg.token).build().login().block();
 
         LOADER.client.getEventDispatcher().on(ReadyEvent.class)
                 .subscribe(event -> {
@@ -74,16 +54,5 @@ public class Arcanine {
         LOADER.client.getEventDispatcher().on(MessageCreateEvent.class).subscribe(ArcanineMessageListener::onMessage);
 
         LOADER.client.onDisconnect().block();
-    }
-
-    private static void handleArg(String mod, String opt) {
-
-        switch(mod) {
-
-            case "gui": LOADER.hasGui = true; break;
-            case "token": LOADER.accessToken = opt.replace(" ", ""); break;
-
-            default: break;
-        }
     }
 }
