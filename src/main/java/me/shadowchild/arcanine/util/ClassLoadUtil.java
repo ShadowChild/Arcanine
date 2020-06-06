@@ -1,6 +1,6 @@
-package io.github.shadowchild.arcanine.util;
+package me.shadowchild.arcanine.util;
 
-import io.github.shadowchild.arcanine.Arcanine;
+import me.shadowchild.arcanine.Arcanine;
 
 public class ClassLoadUtil {
 

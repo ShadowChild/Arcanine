@@ -1,10 +1,10 @@
-package io.github.shadowchild.arcanine;
+package me.shadowchild.arcanine;
 
 import discord4j.core.DiscordClientBuilder;
 import discord4j.core.event.domain.lifecycle.ReadyEvent;
 import discord4j.core.event.domain.message.MessageCreateEvent;
 import discord4j.core.object.entity.User;
-import io.github.shadowchild.arcanine.util.Loader;
+import me.shadowchild.arcanine.util.Loader;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

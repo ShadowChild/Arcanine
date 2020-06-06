@@ -1,4 +1,4 @@
-package io.github.shadowchild.arcanine.command;
+package me.shadowchild.arcanine.command;
 
 import discord4j.core.event.domain.message.MessageEvent;
 import discord4j.core.event.domain.message.ReactionAddEvent;

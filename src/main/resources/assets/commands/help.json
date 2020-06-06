@@ -1,5 +1,5 @@
 {
-  "class": "io.github.shadowchild.arcanine.command.CommandHelp",
+  "class": "me.shadowchild.arcanine.command.CommandHelp",
   "command": {
     "name": "help",
     "alias": [

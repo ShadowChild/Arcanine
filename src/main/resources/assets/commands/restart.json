@@ -1,5 +1,5 @@
 {
-  "class": "io.github.shadowchild.arcanine.command.CommandRestart",
+  "class": "me.shadowchild.arcanine.command.CommandRestart",
   "command": {
     "name": "restart",
     "alias": [

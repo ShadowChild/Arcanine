@@ -1,4 +1,4 @@
-package io.github.shadowchild.arcanine.util;
+package me.shadowchild.arcanine.util;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;

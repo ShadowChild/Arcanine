@@ -1,11 +1,11 @@
-package io.github.shadowchild.arcanine.util;
+package me.shadowchild.arcanine.util;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import discord4j.core.GatewayDiscordClient;
-import io.github.shadowchild.arcanine.Arcanine;
-import io.github.shadowchild.arcanine.command.AbstractCommand;
-import io.github.shadowchild.cybernize.registry.NamedRegistry;
+import me.shadowchild.arcanine.Arcanine;
+import me.shadowchild.arcanine.command.AbstractCommand;
+import me.shadowchild.cybernize.registry.NamedRegistry;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

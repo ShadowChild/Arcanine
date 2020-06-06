@@ -1,4 +1,4 @@
-package io.github.shadowchild.arcanine.util;
+package me.shadowchild.arcanine.util;
 
 import java.io.IOException;
 import java.net.URI;

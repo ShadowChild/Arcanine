@@ -1,4 +1,4 @@
-package io.github.shadowchild.arcanine.command;
+package me.shadowchild.arcanine.command;
 
 import discord4j.core.event.domain.message.MessageEvent;
 import discord4j.core.event.domain.message.ReactionAddEvent;
@@ -6,7 +6,7 @@ import discord4j.core.object.entity.User;
 import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.core.spec.EmbedCreateSpec;
 import discord4j.rest.util.Color;
-import io.github.shadowchild.arcanine.Arcanine;
+import me.shadowchild.arcanine.Arcanine;
 
 import java.util.function.Consumer;
 

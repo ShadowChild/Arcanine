@@ -16,8 +16,8 @@ plugins {
 
 project.ext.d4j = "3.1.0-SNAPSHOT"
 
-group 'io.github.shadowchild.arcanine'
-mainClassName = 'io.github.shadowchild.arcanine.Arcanine'
+group 'me.shadowchild.arcanine'
+mainClassName = 'me.shadowchild.arcanine.Arcanine'
 //rootProject.name = 'Arcanine'
 version '1.0-SNAPSHOT'
 
@@ -36,7 +36,7 @@ dependencies {
 
 ext.sharedManifest = manifest {
 
-    attributes 'Main-Class' : 'io.github.shadowchild.arcanine.Arcanine'
+    attributes 'Main-Class' : 'me.shadowchild.arcanine.Arcanine'
 }
 
 jar {
