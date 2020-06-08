@@ -1,38 +1,39 @@
 package me.shadowchild.arcanine.command;
 
-import discord4j.core.event.domain.message.MessageEvent;
-import discord4j.core.event.domain.message.ReactionAddEvent;
-import discord4j.core.object.entity.User;
-import discord4j.core.object.entity.channel.MessageChannel;
-import discord4j.core.spec.EmbedCreateSpec;
-import discord4j.rest.util.Color;
 import me.shadowchild.arcanine.Arcanine;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.MessageChannel;
+import net.dv8tion.jda.api.entities.MessageEmbed;
+import net.dv8tion.jda.api.entities.User;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.react.MessageReactionAddEvent;
+import org.apache.commons.lang3.StringUtils;
 
-import java.util.function.Consumer;
+import java.awt.*;
 
 public class CommandHelp extends AbstractCommand {
 
+
     @Override
-    public void onMessage(MessageEvent event, MessageChannel channel, User sender, String alias) {
+    public void onMessage(MessageReceivedEvent event, MessageChannel channel, User sender, String alias) {
 
-        Consumer<EmbedCreateSpec> embed = spec -> {
+        EmbedBuilder builder = new EmbedBuilder();
+        builder.setColor(Color.decode("#8b0000"));
+        builder.setTitle("Arcanine Help!", "https://github.com/ShadowChild/Arcanine");
+        builder.setDescription("Arcanine is a bot made by ShadowChild.");
 
-          spec.setColor(Color.RUBY);
-          spec.setTitle("Arcanine Help!");
-          spec.setUrl("https://github.com/ShadowChild/Arcanine");
-          spec.setDescription("Arcanine is a bot made by ShadowChild.");
+        Arcanine.LOADER.commands.getRegistry().forEach((key, cmd) -> {
 
-          Arcanine.LOADER.commands.getRegistry().forEach((key, cmd) -> {
+            builder.addField(StringUtils.capitalize(key), cmd.getDescription(), false);
+        });
 
-                spec.addField(key, cmd.getDescription(), false);
-          });
+        MessageEmbed embed = builder.build();
 
-        };
-        channel.createEmbed(embed).block();
+        channel.sendMessage(embed).queue();
     }
 
     @Override
-    public void onReactionAdd(ReactionAddEvent event, MessageChannel channel, User sender) {
+    public void onReactionAdd(MessageReactionAddEvent event, MessageChannel channel, User sender) {
 
     }
 }

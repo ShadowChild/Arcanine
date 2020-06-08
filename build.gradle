@@ -14,7 +14,8 @@ plugins {
 //    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
 //}
 
-project.ext.d4j = "3.1.0-SNAPSHOT"
+project.ext.jda = "4.1.1_160"
+project.ext.l4j = "2.13.3"
 
 group 'me.shadowchild.arcanine'
 mainClassName = 'me.shadowchild.arcanine.Arcanine'
@@ -23,6 +24,7 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    jcenter()
     maven { url 'https://jitpack.io' }
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
 }
@@ -30,8 +32,16 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 
-    implementation "com.discord4j:discord4j-core:$d4j"
+    implementation "net.dv8tion:JDA:$jda"
+
     implementation ('com.github.ShadowChild:Cybernize2:master-SNAPSHOT') { changing = true }
+
+    // required for async log4j
+    implementation "com.lmax:disruptor:3.4.2"
+
+    implementation "org.apache.logging.log4j:log4j-api:$l4j"
+    implementation "org.apache.logging.log4j:log4j-core:$l4j"
+    implementation "org.apache.logging.log4j:log4j-slf4j-impl:$l4j"
 }
 
 ext.sharedManifest = manifest {

@@ -1,14 +1,26 @@
 package me.shadowchild.arcanine;
 
-import discord4j.core.event.domain.message.MessageCreateEvent;
-import discord4j.core.object.entity.Message;
+import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.events.ReadyEvent;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
-public class ArcanineMessageListener {
+import javax.annotation.Nonnull;
 
-    public static void onMessage(MessageCreateEvent e) {
+public class ArcanineMessageListener extends ListenerAdapter {
 
-        Message m = e.getMessage();
-        String content = m.getContent();
+    @Override
+    public void onReady(@Nonnull ReadyEvent event) {
+
+        int count = event.getGuildTotalCount();
+        Arcanine.LOGGER.info("Arcanine loaded in {} servers", count);
+    }
+
+    @Override
+    public void onMessageReceived(@Nonnull MessageReceivedEvent event) {
+
+        Message message = event.getMessage();
+        String content = message.getContentRaw();
         if(content.startsWith(Arcanine.LOADER.botCfg.prefix)) {
 
             // get rid of the prefix
@@ -25,7 +37,7 @@ public class ArcanineMessageListener {
 
                     if(alias.equalsIgnoreCase(s)) {
 
-                        cmd.onMessage(e, m.getChannel().block(), m.getAuthor().get(), s);
+                        cmd.onMessage(event, message.getChannel(), message.getAuthor(), s);
                     }
                 }
             });

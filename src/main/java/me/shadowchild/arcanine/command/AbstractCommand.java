@@ -1,9 +1,9 @@
 package me.shadowchild.arcanine.command;
 
-import discord4j.core.event.domain.message.MessageEvent;
-import discord4j.core.event.domain.message.ReactionAddEvent;
-import discord4j.core.object.entity.User;
-import discord4j.core.object.entity.channel.MessageChannel;
+import net.dv8tion.jda.api.entities.MessageChannel;
+import net.dv8tion.jda.api.entities.User;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.react.MessageReactionAddEvent;
 
 public abstract class AbstractCommand {
 
@@ -19,8 +19,8 @@ public abstract class AbstractCommand {
 
     protected String[] deep_description;
 
-    public abstract void onMessage(MessageEvent event, MessageChannel channel, User sender, String alias);
-    public abstract void onReactionAdd(ReactionAddEvent event, MessageChannel channel, User sender);
+    public abstract void onMessage(MessageReceivedEvent event, MessageChannel channel, User sender, String alias);
+    public abstract void onReactionAdd(MessageReactionAddEvent event, MessageChannel channel, User sender);
 
     public String getName() {
 

@@ -2,10 +2,10 @@ package me.shadowchild.arcanine.util;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import discord4j.core.GatewayDiscordClient;
 import me.shadowchild.arcanine.Arcanine;
 import me.shadowchild.arcanine.command.AbstractCommand;
 import me.shadowchild.cybernize.registry.NamedRegistry;
+import net.dv8tion.jda.api.JDA;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -23,7 +23,8 @@ public class Loader {
     public LoggerConfig loggerCfg;
     public GuiConfig guiConfig;
 
-    public GatewayDiscordClient client;
+    public JDA client;
+//    public GatewayDiscordClient client;
 
     private URL intCmdFldr, externCmdFldr, configUrl;
 
