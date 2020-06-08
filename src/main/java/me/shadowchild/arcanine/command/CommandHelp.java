@@ -18,7 +18,7 @@ public class CommandHelp extends AbstractCommand {
     public void onMessage(MessageReceivedEvent event, MessageChannel channel, User sender, String alias) {
 
         EmbedBuilder builder = new EmbedBuilder();
-        builder.setColor(Color.decode("#8b0000"));
+        builder.setColor(Color.decode("#E91E63"));
         builder.setTitle("Arcanine Help!", "https://github.com/ShadowChild/Arcanine");
         builder.setDescription("Arcanine is a bot made by ShadowChild.");
 

@@ -11,23 +11,22 @@ public class CommandRefresh extends AbstractCommand {
     @Override
     public void onMessage(MessageReceivedEvent event, MessageChannel channel, User sender, String alias) {
 
-//        channel.createMessage("I am now refreshing my commands!");
+        channel.sendMessage("I am now refreshing my commands!").queue();
 
         Thread thread = new Thread(() -> {
 
             try {
 
                 Arcanine.LOADER.reloadCommands();
-//            channel.createMessage("Commands refreshed successfully");
+                channel.sendMessage("Commands refreshed successfully").queue();
             } catch (Exception e) {
 
                 e.printStackTrace();
-//            channel.createMessage("Commands could not be refreshed, I'm shutting down!");
+                channel.sendMessage("Commands could not be refreshed, I'm shutting down!").queue();
                 System.exit(0);
             }
         });
-
-
+        thread.start();
     }
 
     @Override

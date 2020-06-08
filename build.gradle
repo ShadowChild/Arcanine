@@ -9,10 +9,10 @@ plugins {
 //    targetCompatability = JavaVersion.VERSION_14;
 //}
 
-//configurations.all {
-//
-//    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
-//}
+configurations.all {
+
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
 
 project.ext.jda = "4.1.1_160"
 project.ext.l4j = "2.13.3"

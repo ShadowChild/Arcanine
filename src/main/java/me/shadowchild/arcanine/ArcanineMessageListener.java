@@ -1,11 +1,13 @@
 package me.shadowchild.arcanine;
 
+import me.shadowchild.arcanine.command.AbstractCommand;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.ReadyEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import javax.annotation.Nonnull;
+import java.util.Map;
 
 public class ArcanineMessageListener extends ListenerAdapter {
 
@@ -31,7 +33,10 @@ public class ArcanineMessageListener extends ListenerAdapter {
             }
             String alias = args[0];
 
-            Arcanine.LOADER.commands.getRegistry().values().forEach((cmd) -> {
+            // Clone to prevent ConcurrentModificationException
+            Map<String, AbstractCommand> reg = Arcanine.LOADER.commands.clone();
+
+            reg.values().forEach((cmd) -> {
 
                 for(String s : cmd.getAlias()) {
 

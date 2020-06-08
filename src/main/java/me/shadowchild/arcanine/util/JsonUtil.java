@@ -20,9 +20,7 @@ public class JsonUtil {
         BufferedReader br = Files.newBufferedReader(path);
         JsonReader jr = new JsonReader(br);
 
-        JsonParser jp = new JsonParser();
-
-        return jp.parse(jr);
+        return JsonParser.parseReader(jr);
     }
 
     public static JsonObject getObjectFromPath(Path path) throws IOException {
