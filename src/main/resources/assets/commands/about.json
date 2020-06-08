@@ -1,0 +1,15 @@
+{
+  "class": "me.shadowchild.arcanine.command.CommandAbout",
+  "command": {
+    "name": "about",
+    "alias": [
+      "abuot"
+    ],
+    "permission": "EVERYONE",
+    "usage": ">%cmd%",
+    "description": "Shows information about the bot",
+    "deep_description": [
+      ""
+    ]
+  }
+}
