@@ -69,4 +69,13 @@ public class Arcanine {
         LOADER.client = builder.build();
         LOADER.client.awaitReady();
     }
+
+    public static void safeShutdown() {
+
+        LOADER.commands.getRegistry().values().forEach((cmd) -> {
+
+            cmd.onShutdown(LOADER.client);
+        });
+        LOADER.client.shutdown();
+    }
 }

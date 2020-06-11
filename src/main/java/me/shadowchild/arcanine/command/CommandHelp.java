@@ -2,6 +2,7 @@ package me.shadowchild.arcanine.command;
 
 import me.shadowchild.arcanine.Arcanine;
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.entities.User;
@@ -34,6 +35,11 @@ public class CommandHelp extends AbstractCommand {
 
     @Override
     public void onReactionAdd(MessageReactionAddEvent event, MessageChannel channel, User sender) {
+
+    }
+
+    @Override
+    public void onShutdown(JDA client) {
 
     }
 }

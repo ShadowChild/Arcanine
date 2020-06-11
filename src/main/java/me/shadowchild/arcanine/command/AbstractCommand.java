@@ -1,5 +1,6 @@
 package me.shadowchild.arcanine.command;
 
+import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -21,6 +22,7 @@ public abstract class AbstractCommand {
 
     public abstract void onMessage(MessageReceivedEvent event, MessageChannel channel, User sender, String alias);
     public abstract void onReactionAdd(MessageReactionAddEvent event, MessageChannel channel, User sender);
+    public abstract void onShutdown(JDA client);
 
     public String getName() {
 

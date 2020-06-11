@@ -1,0 +1,18 @@
+{
+  "class": "me.shadowchild.arcanine.command.champs.CommandChamps",
+  "command": {
+    "name": "champs",
+    "alias": [
+      "wwe",
+      "aew",
+      "njpw",
+      "roh"
+    ],
+    "permission": "EVERYONE",
+    "usage": "><wwe/aew/njpw/row>",
+    "description": "Shows which Wrestlers are currently champion.",
+    "deep_description": [
+      ""
+    ]
+  }
+}
