@@ -72,10 +72,13 @@ public class Arcanine {
 
     public static void safeShutdown() {
 
+        LOGGER.debug("Shutting Down!");
         LOADER.commands.getRegistry().values().forEach((cmd) -> {
 
+            LOGGER.debug("Shutting down command: " + cmd.getName());
             cmd.onShutdown(LOADER.client);
         });
+        LOGGER.debug("Shutting down client.");
         LOADER.client.shutdown();
     }
 }

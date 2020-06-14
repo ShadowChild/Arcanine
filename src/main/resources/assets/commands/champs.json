@@ -12,7 +12,8 @@
     "usage": "><wwe/aew/njpw/row>",
     "description": "Shows which Wrestlers are currently champion.",
     "deep_description": [
-      ""
+      "Shows which Wrestlers are currently champion at a promotion.",
+      "Currently supports both AEW and WWE."
     ]
   }
 }
