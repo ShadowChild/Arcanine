@@ -14,7 +14,8 @@ configurations.all {
     resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
 }
 
-project.ext.jda = "4.1.1_160"
+project.ext.jda = "4.1.1_165"
+project.ext.jdautil = "3.0.4"
 project.ext.l4j = "2.13.3"
 
 group 'me.shadowchild.arcanine'
@@ -35,6 +36,7 @@ dependencies {
     implementation "org.jsoup:jsoup:1.13.1"
 
     implementation "net.dv8tion:JDA:$jda"
+    implementation "com.jagrosh:jda-utilities:$jdautil"
 
     implementation ('com.github.ShadowChild:Cybernize2:master-SNAPSHOT') { changing = true }
 
