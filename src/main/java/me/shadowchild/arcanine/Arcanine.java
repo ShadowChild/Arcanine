@@ -38,6 +38,11 @@ public class Arcanine {
 
         LOGGER.info("Configs successfully loaded");
 
+//        if(LOADER.botCfg.gui) {
+//
+//            SwingUtilities.invokeLater(new ArcanineGui());
+//        }
+
         try {
 
             LOGGER.info("Attempting to load commands");
