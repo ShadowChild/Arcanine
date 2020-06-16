@@ -24,6 +24,7 @@ mainClassName = 'me.shadowchild.arcanine.Arcanine'
 version '1.0-SNAPSHOT'
 
 repositories {
+
     mavenCentral()
     jcenter()
     maven { url 'https://jitpack.io' }
@@ -31,6 +32,7 @@ repositories {
 }
 
 dependencies {
+
     testCompile group: 'junit', name: 'junit', version: '4.12'
 
     implementation "org.jsoup:jsoup:1.13.1"

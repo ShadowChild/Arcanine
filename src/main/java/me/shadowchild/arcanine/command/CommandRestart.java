@@ -23,7 +23,8 @@ public class CommandRestart extends AbstractCommand {
 
         if(GuildUtils.isUserAdmin(event.getGuild(), sender)) {
 
-            channel.sendMessage("I am returning to my pokéball").queue();
+            // Fixed the gosh dang bug where é was showing as Ã©
+            channel.sendMessage("I am returning to my pok" + "\u00e9" + "ball! See you soon!").queue();
 
             if (alias.equalsIgnoreCase("shutdown") || alias.equalsIgnoreCase("s")) {
 
@@ -31,6 +32,7 @@ public class CommandRestart extends AbstractCommand {
             } else {
 
                 try {
+
                     File jar = new File(Arcanine.LOADER.JAR_FILE.toURI());
                     String workingDir = jar.getParentFile().getCanonicalPath();
                     String jarName = jar.getName();
@@ -53,11 +55,11 @@ public class CommandRestart extends AbstractCommand {
 
                     BufferedReader br = new BufferedReader(new InputStreamReader(proc.getInputStream()));
                     br.lines().forEach(System.out::println);
+                    Arcanine.safeShutdown();
                 } catch (URISyntaxException | IOException e) {
                     e.printStackTrace();
                 }
             }
-            Arcanine.safeShutdown();
         }
     }
 

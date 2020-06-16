@@ -19,7 +19,7 @@ public class CommandHelp extends AbstractCommand {
 
     @Override
     public void onMessage(MessageReceivedEvent event, MessageChannel channel, User sender, String alias) {
-        
+
         Message m = event.getMessage();
         String[] raw = m.getContentRaw().split(" ");
 
