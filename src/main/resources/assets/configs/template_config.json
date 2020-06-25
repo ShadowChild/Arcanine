@@ -2,7 +2,8 @@
   "bot": {
     "gui": false,
     "token": "GET FROM DISCORD",
-    "prefix": ">"
+    "prefix": ">",
+    "tzdb_token": "GET FROM TIME DB"
   },
   "logger": {
 

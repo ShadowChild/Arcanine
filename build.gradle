@@ -36,6 +36,7 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 
     implementation "org.jsoup:jsoup:1.13.1"
+    implementation "com.konghq:unirest-java:3.7.04"
 
     implementation "net.dv8tion:JDA:$jda"
     implementation "com.jagrosh:jda-utilities:$jdautil"

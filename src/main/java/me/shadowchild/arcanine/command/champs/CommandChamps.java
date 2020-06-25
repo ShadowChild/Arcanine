@@ -5,7 +5,6 @@ import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.google.gson.JsonObject;
 import me.shadowchild.arcanine.command.AbstractCommand;
-import me.shadowchild.cybernize.util.ClassLoadUtil;
 import me.shadowchild.cybernize.util.JsonUtil;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
@@ -31,7 +30,8 @@ public class CommandChamps extends AbstractCommand {
 
     public CommandChamps() {
 
-        cache = CacheBuilder.newBuilder().expireAfterWrite(1, TimeUnit.DAYS).build(
+        cache =
+                CacheBuilder.newBuilder().expireAfterWrite(1, TimeUnit.DAYS).build(
 
             new CacheLoader<String, ArrayList<WrestlerStat>>() {
 
@@ -41,6 +41,7 @@ public class CommandChamps extends AbstractCommand {
                     return getChampsForPromotion(key);
                 }
         });
+
         Thread t = new Thread(() -> {
 
             cache.refresh("wwe");
@@ -136,7 +137,6 @@ public class CommandChamps extends AbstractCommand {
 
                 // TODO: Update this to website scraping when/if they ever get a better website
                 // Currently has to be updated manually
-                URL url = ClassLoadUtil.getSafeCL().getResource("assets/aew.json");
                 try {
 
                     URL path = new URL("https://arcanine.shadowchild.me/aew.json");

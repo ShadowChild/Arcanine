@@ -115,6 +115,7 @@ public class Loader {
         public boolean gui;
         public String token;
         public String prefix;
+        public String tzdb_token;
     }
 
     public class LoggerConfig {
