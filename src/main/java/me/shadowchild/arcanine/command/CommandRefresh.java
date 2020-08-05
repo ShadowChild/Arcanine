@@ -1,6 +1,7 @@
 package me.shadowchild.arcanine.command;
 
 import me.shadowchild.arcanine.Arcanine;
+import me.shadowchild.arcanine.command.template.AbstractCommand;
 import me.shadowchild.arcanine.util.GuildUtils;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.MessageChannel;

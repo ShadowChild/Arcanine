@@ -1,5 +1,6 @@
 package me.shadowchild.arcanine.command;
 
+import me.shadowchild.arcanine.command.template.AbstractCommand;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.MessageChannel;
@@ -8,7 +9,6 @@ import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.events.message.react.MessageReactionAddEvent;
 
-import java.awt.*;
 import java.time.Instant;
 
 public class CommandAbout extends AbstractCommand {
@@ -21,7 +21,7 @@ public class CommandAbout extends AbstractCommand {
         builder.setTitle("About Arcanine", "https://arcanine.shadowchild.me");
         builder.setImage("http://arcanine.shadowchild.me/pokemon-arcanine.jpg");
         builder.setThumbnail("https://arcanine.shadowchild.me/Dali.jpg");
-        builder.setColor(Color.decode("#E91E63"));
+        builder.setColor(arcanine_Red);
         builder.setDescription("Info and Stats about Arcanine");
         builder.setAuthor("ShadowChild", "https://shadowchild.me");
         {

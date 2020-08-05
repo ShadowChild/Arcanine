@@ -1,10 +1,13 @@
-package me.shadowchild.arcanine.command;
+package me.shadowchild.arcanine.command.template;
 
+import me.shadowchild.arcanine.Arcanine;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.events.message.react.MessageReactionAddEvent;
+
+import java.awt.*;
 
 public abstract class AbstractCommand {
 
@@ -19,6 +22,8 @@ public abstract class AbstractCommand {
     protected String description;
 
     protected String[] deep_description;
+
+    public final Color arcanine_Red = Color.decode("#E91E63");
 
     public abstract void onMessage(MessageReceivedEvent event, MessageChannel channel, User sender, String alias);
     public abstract void onReactionAdd(MessageReactionAddEvent event, MessageChannel channel, User sender);
@@ -35,10 +40,7 @@ public abstract class AbstractCommand {
 
         ret[0] = name;
 
-        for (int i = 0; i < alias.length; i++) {
-
-            ret[i+1] = alias[i];
-        }
+        System.arraycopy(alias, 0, ret, 1, alias.length);
 
         return ret;
     }
@@ -50,7 +52,9 @@ public abstract class AbstractCommand {
 
     public String getUsage(String alias) {
 
-        return usage.replaceAll("%cmd%", alias);
+        String ret = usage;
+        ret = ret.replaceAll("%prefix%", Arcanine.LOADER.botCfg.prefix);
+        return ret.replaceAll("%cmd%", alias);
     }
 
     public String getUsage() {

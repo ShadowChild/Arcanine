@@ -1,7 +1,7 @@
 package me.shadowchild.arcanine.command.thread;
 
 import me.shadowchild.arcanine.Arcanine;
-import me.shadowchild.arcanine.command.AbstractCommand;
+import me.shadowchild.arcanine.command.template.AbstractCommand;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.message.GenericMessageEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;

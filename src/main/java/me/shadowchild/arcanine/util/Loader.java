@@ -3,7 +3,7 @@ package me.shadowchild.arcanine.util;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import me.shadowchild.arcanine.Arcanine;
-import me.shadowchild.arcanine.command.AbstractCommand;
+import me.shadowchild.arcanine.command.template.AbstractCommand;
 import me.shadowchild.cybernize.registry.NamedRegistry;
 import me.shadowchild.cybernize.util.ClassLoadUtil;
 import me.shadowchild.cybernize.util.FileUtil;
@@ -72,6 +72,7 @@ public class Loader {
             try {
 
                 AbstractCommand cmd = internalCommand(clazz, props);
+                Arcanine.LOGGER.info("Loaded command: " + cmd.getName());
                 this.commands.register(cmd.getName().toLowerCase(), cmd);
             } catch(Exception e) {
 

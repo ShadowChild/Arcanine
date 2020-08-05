@@ -5,6 +5,7 @@ import kong.unirest.JsonNode;
 import kong.unirest.Unirest;
 import kong.unirest.json.JSONObject;
 import me.shadowchild.arcanine.Arcanine;
+import me.shadowchild.arcanine.command.template.AbstractCommand;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.User;

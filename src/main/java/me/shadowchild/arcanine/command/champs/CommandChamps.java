@@ -4,7 +4,7 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.google.gson.JsonObject;
-import me.shadowchild.arcanine.command.AbstractCommand;
+import me.shadowchild.arcanine.command.template.AbstractCommand;
 import me.shadowchild.cybernize.util.JsonUtil;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;

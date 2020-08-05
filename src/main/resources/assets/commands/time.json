@@ -5,7 +5,7 @@
     "alias": [
     ],
     "permission": "EVERYONE",
-    "usage": ">%cmd% <options> or >%cmd% <userid>",
+    "usage": "%prefix%%cmd% <options> or %prefix%%cmd% <userid>",
     "description": "This will attempt to convert times between timezones. Use \">help time\" for more info.",
     "deep_description": [
       "With this command you can convert time to other timezones.",
