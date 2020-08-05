@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 
 public class Loader {
 
-    public final URL JAR_FILE = Arcanine.class.getProtectionDomain().getCodeSource().getLocation();
+//    public final URL JAR_FILE = Arcanine.class.getProtectionDomain().getCodeSource().getLocation();
 
     public BotConfig botCfg;
     public LoggerConfig loggerCfg;
