@@ -2,6 +2,8 @@ package me.shadowchild.arcanine.util;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
 import me.shadowchild.arcanine.Arcanine;
 import me.shadowchild.arcanine.command.template.AbstractCommand;
 import me.shadowchild.cybernize.registry.NamedRegistry;
@@ -10,6 +12,8 @@ import me.shadowchild.cybernize.util.FileUtil;
 import me.shadowchild.cybernize.util.JsonUtil;
 import net.dv8tion.jda.api.JDA;
 
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -96,9 +100,13 @@ public class Loader {
 
     public void loadConfig() throws IOException, URISyntaxException {
 
-        Path path = FileUtil.getPath(configUrl, resourcesDir + "/configs/Config.json");
+        System.out.println(configUrl.toURI());
+        File file  = ArcanineFileUtils.urlToFile(configUrl);
+//        Path path = FileUtil.getPath(configUrl, resourcesDir + "/configs/Config.json");
 
-        JsonObject contents = JsonUtil.getObjectFromPath(path);
+        JsonReader reader = new JsonReader(new FileReader(file));
+
+        JsonObject contents = JsonParser.parseReader(reader).getAsJsonObject();
 
         Gson gson = new Gson();
 
